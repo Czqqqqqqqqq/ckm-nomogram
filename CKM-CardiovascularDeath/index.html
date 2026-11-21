@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<base href="../">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#153c55">
+<meta name="description" content="A dynamic XGBoost nomogram for all-cause and cardiovascular mortality in the CKM study.">
+<title>CKM-CardiovascularDeath</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="nomogram.css">
+<script defer src="model.js"></script>
+<script defer src="engine.js"></script>
+<script defer src="nomogram.js"></script>
+<script defer src="app.js"></script>
+</head>
+<body>
+<header class="mast"><div class="bound mast-inner"><div class="identity"><span class="sig" aria-hidden="true"><i></i><i></i><i></i><i></i></span><strong>CKM Study</strong><span class="mast-rule"></span><span class="mast-section">Prediction tools</span></div><button class="print" id="print" type="button">Print summary</button></div></header>
+<main class="bound">
+<section class="head"><div><h1 id="page-title">CKM-CardiovascularDeath</h1><p>Explore how clinical predictors and A Body Shape Index (ABSI) contribute to estimated mortality in CKM stages 0–3.</p></div>
+<div class="endpoints"><span class="field-caption" id="outcome-label">Outcome</span><div class="seg" role="group" aria-labelledby="outcome-label"><button id="end-all" type="button" data-end="Allcause" aria-pressed="false">All-cause mortality</button><button id="end-cvd" type="button" data-end="CVD" aria-pressed="true">Cardiovascular mortality</button></div></div></section>
+<div class="layout">
+<aside class="parameters"><form id="form">
+<div class="form-heading"><h2>Predictors</h2><button class="text-button" type="button" id="reset">Reset inputs</button></div>
+<div id="fields"></div>
+<div class="form-actions"><button type="submit" class="primary">Predict</button><span class="status" id="edit-status" aria-live="polite"></span></div>
+</form></aside>
+<section class="results" aria-label="Model results">
+<div class="tabs" role="tablist" aria-label="Results">
+<button id="tab-graph" data-tab="graph" role="tab" aria-selected="true" aria-controls="graph">Graphical Summary</button>
+<button id="tab-numeric" data-tab="numeric" role="tab" aria-selected="false" aria-controls="numeric" tabindex="-1">Numerical Summary</button>
+</div>
+<section id="graph" role="tabpanel" aria-labelledby="tab-graph">
+<div class="risk"><div><div class="risk-label" id="estimate-label">Cardiovascular mortality</div><output id="probability" aria-labelledby="estimate-label">—</output><p id="profile-label">Example profile</p></div><div class="risk-scale"><div class="scale-label">Predicted probability</div><div id="risk-track"><i id="risk-mark"></i></div><div class="scale-ticks"><span>0%</span><span>50%</span><span>100%</span></div></div></div>
+<div class="figure-head"><h2>Individual nomogram</h2></div>
+<div id="nomogram"></div>
+</section>
+<section id="numeric" role="tabpanel" aria-labelledby="tab-numeric" hidden><div class="section-head"><h2>Numerical summary</h2><p>Compare predictions and inputs for the profiles calculated in this session.</p></div><div id="numerical-table"></div></section>
+<p class="scope">Research use. Probabilities refer to death during observed follow-up. Follow-up duration varied between participants.</p>
+</section>
+</div>
+</main>
+<noscript>Enable JavaScript to calculate predictions from the frozen models.</noscript>
+</body>
+</html>
